@@ -6,9 +6,11 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:52:27 by caquinta          #+#    #+#             */
-/*   Updated: 2022/07/31 11:52:31 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/07/31 13:06:16 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/so_long.h"
 
 int detect_char(char c)
 {
