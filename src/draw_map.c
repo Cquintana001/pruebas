@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 08:55:37 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/01 14:52:12 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/01 15:02:55 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void draw_map(t_map *state)
 		{
 			if(state->array[state->y][state->x] == '1')
 				mlx_put_image_to_window(state->mlx, state->window, state->img, state->x * img_height, state->y * img_width);
-			else if (state->array[state->y][state->x] != '0')		
+			else if (state->array[state->y][state->x] != '1')		
 				mlx_put_image_to_window(state->mlx, state->window, state->img1, state->x * img_height, state->y * img_width); 
 			state->x+=1;
 		}
