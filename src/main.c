@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:22:44 by caquinta          #+#    #+#             */
-/*   Updated: 2022/07/31 13:35:34 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/01 14:50:34 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 #include "../minilibx/mlx.h"
 #include "../includes/state.h"
 #include "../printf/ft_printf.h"
+
 int	main(int argc, char *argv[])
 {
 	int fd;
-	/* t_map	state;
+	char **map;
+	t_map	*state;
 	 
-
-	if (!init_state(&state))
-		exit(0); */
 	if(argc !=2)
 	{
 		ft_printf("Numero de argumentos incorrecto\n");
@@ -30,7 +29,11 @@ int	main(int argc, char *argv[])
 	}
 	 check_extension(argv[1], ".ber");
 	fd = check_fd(argv[1]); 	 
-	check_map(fd);
-	
+	map = check_map(fd);
+	 
+	state = get_data(map);
+	draw_map(state);
+	draw_champ(state);
+	mlx_loop(state->mlx);	
 	return (0);
 }

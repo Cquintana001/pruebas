@@ -1,7 +1,7 @@
 NAME				=	so_long
 
 CC 					= 	gcc
-CFLAGS 				= 	
+CFLAGS 				= 	-Wall -Werror -Wextra
 SRC_DIR				=	src
 LIB_FT				=	Libft
 LIB_GNL				=	Gnl
@@ -13,8 +13,10 @@ SOURCES				=	$(LIB_GNL)/get_next_line.c \
 						$(SRC_DIR)/checkers.c\
 						$(SRC_DIR)/detect_different_char.c\
 						$(SRC_DIR)/detect.c\
-						$(SRC_DIR)/state.c
-
+						$(SRC_DIR)/state.c\
+						$(SRC_DIR)/fill_data.c\
+						$(SRC_DIR)/draw_map.c\
+						$(SRC_DIR)/champion.c
 MAIN_SOURCES		= 	$(SRC_DIR)/main.c $(SOURCES)
 OBJS				= 	$(MAIN_SOURCES:.c=.o)
 LIB_MINILIBX		=	minilibx
@@ -38,11 +40,14 @@ $(NAME): $(OBJS)
 
 all: $(NAME)
 
-clean:
-	rm -f $(OBJS) $(NAME) libft.a libmlx.a
+fclean : clean
 	make fclean -C $(LIB_FT)
 	make fclean -C $(LIB_PRINTF)
 	make clean -C $(LIB_MINILIBX)
+
+clean:
+	rm -f $(OBJS) $(NAME) libft.a libmlx.a
+	 
 
 .PHONY: all
 

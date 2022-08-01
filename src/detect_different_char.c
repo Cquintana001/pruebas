@@ -6,12 +6,12 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 12:01:54 by caquinta          #+#    #+#             */
-/*   Updated: 2022/07/31 13:30:54 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/01 08:26:38 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#
+
 int detect_different_char(char *array)
 {	
 	int check;

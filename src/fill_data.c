@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hello.c                                      :+:      :+:    :+:   */
+/*   fill_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 08:28:34 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/01 14:47:06 by caquinta         ###   ########.fr       */
+/*   Created: 2022/08/01 08:07:40 by caquinta          #+#    #+#             */
+/*   Updated: 2022/08/01 11:45:31 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-//#include "../Libft/libft.h"
-#include "../printf/ft_printf.h"
+#include "../includes/so_long.h"
+#include <stdio.h>
+#include "../minilibx/mlx.h"
 
-void	ft_print_hello(void)
+t_map *get_data(  char **map)
 {
+	t_map *map1 = malloc(sizeof(t_map) *1);
+	map1->lenght = ft_strlen(*map);	  
  
-		ft_printf("Hola mundo\n");
+	map1->width = two_dimension_array_len(map);
+ 
+	map1->array = map;
+	map1->x = 0;
+	map1->y = 0;
+	 
+	 
+	 
+	return(map1);
 }

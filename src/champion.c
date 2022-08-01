@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hello.c                                      :+:      :+:    :+:   */
+/*   champion.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 08:28:34 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/01 14:47:06 by caquinta         ###   ########.fr       */
+/*   Created: 2022/08/01 14:25:13 by caquinta          #+#    #+#             */
+/*   Updated: 2022/08/01 14:41:17 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-//#include "../Libft/libft.h"
-#include "../printf/ft_printf.h"
+#include "../includes/so_long.h"
+#include "../minilibx/mlx.h"
 
-void	ft_print_hello(void)
+void draw_champ(t_map *state)
 {
- 
-		ft_printf("Hola mundo\n");
+	int x;
+	int y;
+
+	x = 1;
+	y = 1;
+	
+	mlx_put_image_to_window(state->mlx, state->window, state->img2, state->x * 64, state->y * 64);
+
+	
 }
