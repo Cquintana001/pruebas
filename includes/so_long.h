@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:29:45 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/01 14:32:00 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/02 13:41:17 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,32 @@
 #include "../Libft/libft.h"
 #include "../Gnl/get_next_line.h"
 
+typedef struct s_position{
+
+	int x;
+	int y;
+	
+} t_position;
+
+typedef struct s_image{
+	
+	int w;
+	int h;
+	void *floor;
+	void *path;
+	void *champ;
+} t_image;
 typedef struct s_map{
 	
-	  char **array;
+	char **array;
 	void *mlx;
 	void *window;
-	void *img;
-	void *img1;
-	void *img2;
 	int width;
 	int lenght;
 	int x;
 	int y;
+	t_position *pos;
+	t_image *img;
 } t_map;
 
 int check_if_rectangular(char **map, int nbr_of_lines);
@@ -47,7 +61,11 @@ int detect_exit(char c);
 int detect_starting_p(char c);
 int two_dimension_array_len(char **array);
  char *map_to_one_line(int fd, char *aux1);
-t_map *get_data(  char **map);
+t_map *get_map_data(  char **map);
 void draw_map(t_map *state);
-void draw_champ(t_map *state);
+void draw_champ(t_map *state, t_position *pos);
+t_image *get_image_data(t_map *map);
+t_position *get_position(char **map);
+int key_hook(int keycode, void *pos);
+int key_event(int button, void *param);
 #endif

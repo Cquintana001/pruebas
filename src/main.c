@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:22:44 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/01 14:50:34 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/02 13:42:52 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,21 @@
 #include "../includes/state.h"
 #include "../printf/ft_printf.h"
 
+/* int mouse_event(int button, void *param)
+{
+	param =NULL;
+    // Whenever the event is triggered, print the value of button to console.
+    printf("evento %d\n",button);
+	return (0);
+} */
 int	main(int argc, char *argv[])
 {
 	int fd;
 	char **map;
 	t_map	*state;
-	 
+	/* t_image *img;
+	t_position *pos; */
+ 
 	if(argc !=2)
 	{
 		ft_printf("Numero de argumentos incorrecto\n");
@@ -29,11 +38,13 @@ int	main(int argc, char *argv[])
 	}
 	 check_extension(argv[1], ".ber");
 	fd = check_fd(argv[1]); 	 
-	map = check_map(fd);
-	 
-	state = get_data(map);
+	map = check_map(fd);	 
+	state = get_map_data(map);
+	/* img = get_image_data(state);
+	pos = get_position(map); */
 	draw_map(state);
-	draw_champ(state);
+	//draw_champ(state, pos);
+	//mlx_key_hook(state->window, &key_event, (void*)pos);
 	mlx_loop(state->mlx);	
 	return (0);
 }

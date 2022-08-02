@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 08:55:37 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/01 15:02:55 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/02 13:42:04 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,22 @@
  
  
 void draw_map(t_map *state)
-{
-	int img_width;
-	int img_height;
-	 
-	state->mlx = mlx_init();
-	state->img = mlx_xpm_file_to_image(state->mlx, "/Users/caquinta/Desktop/pruebas/concrete.xpm", &img_width, &img_height);
-	state->img1 = mlx_xpm_file_to_image(state->mlx, "/Users/caquinta/Desktop/pruebas/grass.xpm", &img_width, &img_height);
-	state->img2 =  mlx_xpm_file_to_image(state->mlx,  "/Users/caquinta/Desktop/pruebas/output-onlinepngtools.xpm", &img_width, &img_height);
-	state->window = mlx_new_window(state->mlx, state->lenght * img_height, state->width * img_width, "so_long");
+{ 
+	t_image *img;
+
+	img = state->img; 
+	state->window = mlx_new_window(state->mlx, state->lenght * img->h, state->width * img->w, "so_long");
 	while(state->y < state->width)
 	{
 		state->x = 0;		 
 		while(state->x < state->lenght )
 		{
 			if(state->array[state->y][state->x] == '1')
-				mlx_put_image_to_window(state->mlx, state->window, state->img, state->x * img_height, state->y * img_width);
-			else if (state->array[state->y][state->x] != '1')		
-				mlx_put_image_to_window(state->mlx, state->window, state->img1, state->x * img_height, state->y * img_width); 
+				mlx_put_image_to_window(state->mlx, state->window, img->floor, state->x * img->h, state->y * img->w);
+			 else if (state->array[state->y][state->x] == 'P')		
+				mlx_put_image_to_window(state->mlx, state->window, img->champ, state->x * img->h, state->y * img->w);   
+			else   		
+				mlx_put_image_to_window(state->mlx, state->window, img->path, state->x * img->h, state->y * img->w);
 			state->x+=1;
 		}
 		state->y+=1;
