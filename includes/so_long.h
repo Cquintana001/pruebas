@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:29:45 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/02 13:41:17 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/02 14:45:18 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,10 @@ int two_dimension_array_len(char **array);
  char *map_to_one_line(int fd, char *aux1);
 t_map *get_map_data(  char **map);
 void draw_map(t_map *state);
-void draw_champ(t_map *state, t_position *pos);
+void draw_champ(t_map *state);
 t_image *get_image_data(t_map *map);
 t_position *get_position(char **map);
 int key_hook(int keycode, void *pos);
 int key_event(int button, void *param);
+void renew_map(t_map *state);
 #endif

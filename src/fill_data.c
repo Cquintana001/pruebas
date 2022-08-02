@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 08:07:40 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/02 13:43:26 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/02 15:11:43 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ t_position *get_position(char **map)
 		{
 			if(map[x][y] == 'P')
 				{
-					position->x = x;
 					position->y = y;
+					position->x = x;
 				}
 				y++;
 		}
