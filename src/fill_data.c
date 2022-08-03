@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 08:07:40 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/03 14:28:26 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:58:28 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,8 @@ t_map	*get_map_data(char **map)
 	map1->img = get_image_data(map1);
 	map1->pos = get_position(map);
 	map1->coins = get_coins(map);
+	map1->movements = 0;
+	map1->pos->x1 = map1->pos->x;
+	map1->pos->y1 = map1->pos->y;
 	return (map1);
 }

@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:29:45 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/03 12:32:36 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/03 15:09:39 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ typedef struct s_position{
 
 	int x;
 	int y;
-	
+	int x1;
+	int y1;
 } t_position;
 
 typedef struct s_elements{
@@ -46,6 +47,7 @@ typedef struct s_image{
 
 typedef struct s_map{
 	
+	int movements;
 	char **array;
 	void *mlx;
 	void *window;
@@ -85,4 +87,5 @@ int key_event(int button, void *param);
 void renew_map(t_map *state);
  int	close_win( void *vars1);
 void	draw_elements(t_map *state);
+void check_movements(t_map *state);
 #endif

@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:25:13 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/03 14:24:20 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/03 15:13:14 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int	key_event(int button, void *param)
 		draw_champ(state);
 	if (button == 53)
 		close_win(state);
+	check_movements(state);
 	return (0);
 }
 
