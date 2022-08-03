@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:22:44 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/02 15:34:42 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/03 08:25:07 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ int	main(int argc, char *argv[])
 	int fd;
 	char **map;
 	t_map	*state;
-	/* t_image *img;
-	t_position *pos; */
- 
+
 	if(argc !=2)
 	{
 		ft_printf("Numero de argumentos incorrecto\n");
@@ -43,6 +41,7 @@ int	main(int argc, char *argv[])
 	draw_map(state);
 	draw_champ(state);
 	mlx_key_hook(state->window, &key_event, (void*)state);
+	mlx_hook(state->window, 17, 0, &close_win, (void*)state);  
 	mlx_loop(state->mlx);	
 	return (0);
 }

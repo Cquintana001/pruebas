@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 08:55:37 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/02 15:30:15 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/03 07:54:14 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../minilibx/mlx.h"
 #include <stdio.h>
 
+ 
 void renew_map(t_map *state)
 {
 	t_image *img;
@@ -27,8 +28,6 @@ void renew_map(t_map *state)
 		{
 			if(state->array[state->x][state->y] == '1')
 				mlx_put_image_to_window(state->mlx, state->window, img->floor, state->y * img->h, state->x * img->w);
-			 else if (state->pos->x == state->x && state->pos->y == state->y)		
-				mlx_put_image_to_window(state->mlx, state->window, img->champ, state->y * img->h, state->x * img->w);
 			else   		
 				mlx_put_image_to_window(state->mlx, state->window, img->path, state->y * img->h, state->x * img->w);
 			state->y+=1;
