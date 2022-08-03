@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 12:03:00 by caquinta          #+#    #+#             */
-/*   Updated: 2022/07/31 13:25:54 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/03 09:12:50 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,45 +16,47 @@
 #include "../Libft/libft.h"
 #include "../Gnl/get_next_line.h"
 
-int check_mandatory_char(char *array)
+int	check_mandatory_char(char *array)
 {
-	int collectible;
-	int exit;
-	int start_p;
-	int empty_space;
+	int	collectible;
+	int	exit;
+	int	start_p;
+	int	empty_space;
 
 	empty_space = 0;
 	collectible = 0;
 	exit = 0;
 	start_p = 0;
-	while(*array)
-	{	
+	while (*array)
+	{
 		collectible += detect_collectible(*array);
 		exit += detect_exit(*array);
 		start_p += detect_starting_p(*array);
-		empty_space += detect_empty_space(*array);	 	 
+		empty_space += detect_empty_space(*array);
 		array++;
 	}
-	if(collectible<1 || exit<1 || start_p<1 || empty_space<1)
+	if (collectible < 1 || exit < 1 || start_p < 1 || empty_space < 1)
 	{
 		ft_printf("There is no exit, collectible, start_p or empty space.\n");
-		return(0);
+		return (0);
 	}
-		return (1);
+	return (1);
 }
-int check_extension(char *path, char *extension)
+
+int	check_extension(char *path, char *extension)
 {
-	int i;
-	int j;
-	int check;
+	int	i;
+	int	j;
+	int	check;
 
 	check = 1;
 	j = ft_strlen(extension);
 	i = ft_strlen(path);
-	if(i>=j)
-		while(path[i-1] && extension[j-1])
+	if (i >= j)
+	{
+		while (path[i - 1] && extension[j - 1])
 		{
-			if(path[i-1] != extension[j-1])
+			if (path[i - 1] != extension[j - 1])
 			{
 				check = 0;
 				break ;
@@ -62,16 +64,18 @@ int check_extension(char *path, char *extension)
 			j--;
 			i--;
 		}
+	}
 	else
-		check = 0;	 
-	return(check);
+		check = 0;
+	return (check);
 }
-int check_fd(char *path)
+
+int	check_fd(char *path)
 {
-	int fd;
+	int	fd;
 
 	fd = open(path, O_RDONLY);
-	if(fd<0)
+	if (fd < 0)
 	{
 		ft_printf("El path no es una dirección válida\n ");
 		return (0);
@@ -79,22 +83,24 @@ int check_fd(char *path)
 	else
 		return (fd);
 }
-char **check_map(int fd)
+
+char	**check_map(int fd)
 {
-	char *line;  
-	char *aux1;	 
-	char **map;
+	char	*line;
+	char	*aux1;
+	char	**map;
+
 	aux1 = get_next_line(fd);
-	if(!aux1)
+	if (!aux1)
 	{
 		ft_printf("Error.\nEl mapa está vacío.\n");
-		return(0);
+		return (0);
 	}
 	else
-	line = map_to_one_line( fd, aux1);
-	if(!check_mandatory_char(line) || !detect_different_char(line)) 
-		exit(0);	
+		line = map_to_one_line(fd, aux1);
+	if (!check_mandatory_char(line) || !detect_different_char(line))
+		exit(0);
 	map = ft_split(line, '\n');
 	check_map_configuration(map);
-	return(map);
+	return (map);
 }

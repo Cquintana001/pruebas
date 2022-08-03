@@ -8,7 +8,6 @@ LIB_GNL				=	Gnl
 LIB_PRINTF			=	printf
 SOURCES				=	$(LIB_GNL)/get_next_line.c \
 						$(LIB_GNL)/get_next_line_utils.c \
-						$(SRC_DIR)/print_hello.c\
 						$(SRC_DIR)/check_map.c\
 						$(SRC_DIR)/checkers.c\
 						$(SRC_DIR)/detect_different_char.c\

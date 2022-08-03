@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:29:45 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/03 08:25:36 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/03 12:32:36 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,27 @@ typedef struct s_position{
 	
 } t_position;
 
+typedef struct s_elements{
+
+	char	*f;
+	char	*p;
+	char	*ch;
+	char	*d;
+	char	*co;
+} t_elements;
+
 typedef struct s_image{
 	
-	int w;
-	int h;
-	void *floor;
-	void *path;
-	void *champ;
+	int		w;
+	int		h;
+	void	*floor;
+	void	*path;
+	void	*champ;
+	void	*door;
+	void	*collectible;
+
 } t_image;
+
 typedef struct s_map{
 	
 	char **array;
@@ -40,6 +53,7 @@ typedef struct s_map{
 	int lenght;
 	int x;
 	int y;
+	int coins;
 	t_position *pos;
 	t_image *img;
 } t_map;
@@ -70,4 +84,5 @@ int key_hook(int keycode, void *pos);
 int key_event(int button, void *param);
 void renew_map(t_map *state);
  int	close_win( void *vars1);
+void	draw_elements(t_map *state);
 #endif
