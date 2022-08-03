@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 08:07:40 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/03 12:35:11 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:28:26 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ t_position	*get_position(char **map)
 	}
 	return (position);
 }
-int get_coins(char **map)
+
+int	get_coins(char **map)
 {
 	int			x;
 	int			y;
-	int coins;
+	int			coins;
 
 	coins = 0;
 	x = 0;
@@ -60,19 +61,19 @@ int get_coins(char **map)
 		x++;
 	}
 	return (coins);
-	
 }
+
 t_image	*get_image_data(t_map *map)
 {	
-	t_image	*img;
-	t_elements i;
+	t_image		*img;
+	t_elements	i;
+
 	img = malloc(sizeof(t_image) * 1);
-	i.ch = "/Users/caquinta/Desktop/pruebas/pnj64.xpm";
-	i.p = "/Users/caquinta/Desktop/pruebas/grass.xpm";
-	i.f = "/Users/caquinta/Desktop/pruebas/concrete.xpm";
-	i.co = "/Users/caquinta/Desktop/pruebas/collectible.xpm";
-	i.d = "/Users/caquinta/Desktop/pruebas/door.xpm";
-	
+	i.ch = "img/pnj64.xpm";
+	i.p = "img/grass.xpm";
+	i.f = "img/concrete.xpm";
+	i.co = "img/collectible.xpm";
+	i.d = "img/door.xpm";
 	img->champ = mlx_xpm_file_to_image(map->mlx, i.ch, &img->w, &img->h);
 	img->floor = mlx_xpm_file_to_image(map->mlx, i.f, &img->w, &img->h);
 	img->path = mlx_xpm_file_to_image(map->mlx, i.p, &img->w, &img->h);

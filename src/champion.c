@@ -6,14 +6,14 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:25:13 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/03 12:51:21 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:24:20 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../minilibx/mlx.h"
 #include <stdio.h>
- 
+
 int	move_right(t_map *state)
 {
 	char	**array;
@@ -25,13 +25,13 @@ int	move_right(t_map *state)
 	array = state->array;
 	if (array[x][y + 1] == '1')
 		return (0);
-	else  if(array[x][y + 1] == 'C')
-	{	
-		array[x][y + 1] = '0';		
-		state->coins-=1;
+	else if (array[x][y + 1] == 'C')
+	{
+		array[x][y + 1] = '0';
+		state->coins -= 1;
 	}
-	else if(array[x][y + 1] == 'E' && state->coins<1)
-		close_win((void*) state);
+	else if (array[x][y + 1] == 'E' && state->coins < 1)
+		close_win((void *)state);
 	state->pos->y += 1;
 	return (1);
 }
@@ -49,13 +49,13 @@ int	move_left(t_map *state)
 	array = state->array;
 	if (array[x][y - 1] == '1')
 		return (0);
-	else if(array[x][y - 1] == 'C')
+	else if (array[x][y - 1] == 'C')
 	{
-		array[x][y - 1] = '0';		
-		state->coins-=1;
+		array[x][y - 1] = '0';
+		state->coins -= 1;
 	}
-	else if(array[x][y - 1] == 'E' && state->coins<1)
-		close_win((void*) state); 	
+	else if (array[x][y - 1] == 'E' && state->coins < 1)
+		close_win((void *)state);
 	state->pos->y -= 1;
 	return (1);
 }
@@ -73,14 +73,14 @@ int	move_up(t_map *state)
 	array = state->array;
 	if (array[x + 1][y] == '1')
 		return (0);
-	else if(array[x + 1][y] == 'C')
+	else if (array[x + 1][y] == 'C')
 	{
-		array[x + 1][y] = '0';		
-		state->coins-=1;
-	} 	
-	else if(array[x + 1][y] == 'E' && state->coins<1)
-		close_win((void*) state);
-	state->pos->x += 1;	
+		array[x + 1][y] = '0';
+		state->coins -= 1;
+	}
+	else if (array[x + 1][y] == 'E' && state->coins < 1)
+		close_win((void *)state);
+	state->pos->x += 1;
 	return (1);
 }
 
@@ -97,13 +97,14 @@ int	move_down(t_map *state)
 	array = state->array;
 	if (array[x - 1][y] == '1')
 		return (0);
-	else if(array[x - 1][y] == 'C')
-	{	state->coins-=1;	 	
+	else if (array[x - 1][y] == 'C')
+	{
+		state->coins -= 1;
 		array[x - 1][y] = '0';
-	}		
-	else if(array[x - 1][y] == 'E' && state->coins<1)
-		close_win((void*) state);
-	state->pos->x -= 1;	
+	}
+	else if (array[x - 1][y] == 'E' && state->coins < 1)
+		close_win((void *)state);
+	state->pos->x -= 1;
 	return (1);
 }
 
