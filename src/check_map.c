@@ -6,12 +6,25 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:54:15 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/03 09:04:02 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:04:45 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Libft/libft.h"
 #include "../includes/so_long.h"
+
+void free_map(char **array)
+{
+	int x;
+
+	x = 0;
+	while(array[x])
+	{
+		free(array[x]);
+		x++;
+	}
+	free(array);
+}
 
 int	check_if_rectangular(char **map, int nbr_of_lines)
 {
@@ -36,7 +49,7 @@ int	check_if_rectangular(char **map, int nbr_of_lines)
 	return (1);
 }
 
-void	check_first_last_line(char *line)
+int	check_first_last_line(char *line)
 {
 	int	check;
 
@@ -46,10 +59,11 @@ void	check_first_last_line(char *line)
 		if (check == 0)
 		{
 			ft_printf("Muros primera y última línea mal configurados\n");
-			exit(0);
+			return(0);
 		}
 		line++;
 	}
+	return(1);
 }
 
 int	check_middle_lines(char *line)
@@ -60,7 +74,7 @@ int	check_middle_lines(char *line)
 	if (*line != '1' || line[len_of_line - 1] != '1')
 	{
 		ft_printf("Muros líneas intermedias mal configurados\n");
-		return (0);
+		return(0);
 	}
 	else
 		return (1);
@@ -70,20 +84,26 @@ void	check_walls(char **map, int nbr_of_lines)
 {
 	int	i;
 	int	len_of_line;
+	int check;
 
+	check = 0;
 	len_of_line = ft_strlen(*map);
 	i = 0;
 	while (i < nbr_of_lines)
 	{
 		if (i == 0 || i == nbr_of_lines - 1)
-			check_first_last_line(*map);
+			check = check_first_last_line(*map);
 		else
-			check_middle_lines(*map);
+			check =	check_middle_lines(*map);
+		if(check == 0)
+		{	
+			free_map(map);
+			exit(0);
+		}
 		i++;
 		map++;
 	}
 }
-
 void	check_map_configuration(char **map)
 {
 	int	nbr_of_lines;

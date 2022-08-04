@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 12:03:00 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/04 09:47:00 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/04 12:04:46 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	check_mandatory_char(char *array)
 		empty_space += detect_empty_space(*array);
 		array++;
 	}
-	if (collectible < 1 || exit < 1 || start_p < 1 || empty_space < 1)
+	if (collectible < 1 || exit != 1 || start_p != 1 || empty_space < 1)
 	{
-		ft_printf("There is no exit, collectible, start_p or empty space.\n");
+		ft_printf("Número de elementos no válido\n");
 		return (0);
 	}
 	return (1);
@@ -93,7 +93,6 @@ char	**check_map(int fd)
 	aux1 = get_next_line(fd);
 	if (!aux1)
 	{
-		//free(aux1);
 		ft_printf("Error.\nEl mapa está vacío.\n");
 		exit(0);
 	}
@@ -107,6 +106,5 @@ char	**check_map(int fd)
 	map = ft_split(line, '\n');
 	free(line);
 	check_map_configuration(map);
- 
 	return (map);
 }

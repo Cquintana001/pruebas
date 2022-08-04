@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:22:44 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/04 09:51:59 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/04 11:59:18 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,58 @@
 #include "../minilibx/mlx.h"
 #include "../printf/ft_printf.h"
 
-void check_movements(t_map *state)
+void	check_movements(t_map *state)
 {	
-	 int	x;
-	 int	y;
-	 int	x1;
-	 int	y1;
-	 
+	int	x;
+	int	y;
+	int	x1;
+	int	y1;
+
 	x = state->pos->x;
 	x1 = state->pos->x1;
 	y = state->pos->y;
 	y1 = state->pos->y1;
-	if(x != x1 || y != y1)
+	if (x != x1 || y != y1)
 	{
-		state->movements +=1;
+		state->movements += 1;
 		ft_printf("Movimientos: %d\n", state->movements);
 		state->pos->x1 = state->pos->x;
 		state->pos->y1 = state->pos->y;
 	}
-	 
 }
- 
+
+int	close_win(void *vars1)
+{
+	t_map	*vars;
+	int		i;
+
+	vars = vars1;
+	i = 0;
+	while ((vars->array)[i])
+	{
+		free((vars->array)[i]);
+		i++;
+	}
+	free(vars->array);
+	free(vars->pos);
+	free(vars->img);
+	exit(0);
+	return (0);
+}
+
+void	draw_champ(t_map *state)
+{
+	t_image	*img;
+	int		x;
+	int		y;
+
+	img = state->img;
+	x = state->pos->x * img->w;
+	y = state->pos->y * img->h;
+	renew_map(state);
+	draw_elements(state);
+	mlx_put_image_to_window(state->mlx, state->window, img->champ, y, x);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -56,6 +87,5 @@ int	main(int argc, char *argv[])
 	mlx_key_hook(state->window, &key_event, (void *)state);
 	mlx_hook(state->window, 17, 0, &close_win, (void *)state);
 	mlx_loop(state->mlx);
-	//close_win((void *)state);
 	return (0);
 }

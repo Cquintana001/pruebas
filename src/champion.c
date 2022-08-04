@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:25:13 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/04 09:49:22 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/04 11:57:33 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../minilibx/mlx.h"
 #include <stdio.h>
 
- int	move_right(t_map *state)
+int	move_right(t_map *state)
 {
 	char	**array;
 	int		x;
@@ -127,8 +127,7 @@ int	key_event(int button, void *param)
 	return (0);
 }
 
-
-void	draw_champ(t_map *state)
+/* void	draw_champ(t_map *state)
 {
 	t_image	*img;
 	int		x;
@@ -140,9 +139,8 @@ void	draw_champ(t_map *state)
 	renew_map(state);
 	draw_elements(state);
 	mlx_put_image_to_window(state->mlx, state->window, img->champ, y, x);
-} 
- 
-int	close_win(void *vars1)
+}  */
+/* int	close_win(void *vars1)
 {
 	t_map	*vars;
 	int		i;
@@ -159,4 +157,4 @@ int	close_win(void *vars1)
 	free(vars->img);
 	exit(0);
 	return (0);
-}
+} */
