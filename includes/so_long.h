@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:29:45 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/03 15:09:39 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/04 08:57:01 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_position *get_position(char **map);
 int key_hook(int keycode, void *pos);
 int key_event(int button, void *param);
 void renew_map(t_map *state);
- int	close_win( void *vars1);
+int	close_win(void *vars1);
 void	draw_elements(t_map *state);
 void check_movements(t_map *state);
 #endif

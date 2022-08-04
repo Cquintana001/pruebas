@@ -6,13 +6,12 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:22:44 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/03 15:10:58 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/04 09:51:59 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../minilibx/mlx.h"
-#include "../includes/state.h"
 #include "../printf/ft_printf.h"
 
 void check_movements(t_map *state)
@@ -35,6 +34,8 @@ void check_movements(t_map *state)
 	}
 	 
 }
+ 
+
 int	main(int argc, char *argv[])
 {
 	int		fd;
@@ -55,5 +56,6 @@ int	main(int argc, char *argv[])
 	mlx_key_hook(state->window, &key_event, (void *)state);
 	mlx_hook(state->window, 17, 0, &close_win, (void *)state);
 	mlx_loop(state->mlx);
+	//close_win((void *)state);
 	return (0);
 }

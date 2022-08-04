@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 12:03:00 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/03 09:12:50 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/04 09:47:00 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,20 @@ char	**check_map(int fd)
 	aux1 = get_next_line(fd);
 	if (!aux1)
 	{
+		//free(aux1);
 		ft_printf("Error.\nEl mapa está vacío.\n");
-		return (0);
+		exit(0);
 	}
 	else
 		line = map_to_one_line(fd, aux1);
 	if (!check_mandatory_char(line) || !detect_different_char(line))
+	{
+		free(line);
 		exit(0);
+	}
 	map = ft_split(line, '\n');
+	free(line);
 	check_map_configuration(map);
+ 
 	return (map);
 }
