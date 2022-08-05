@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 12:03:00 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/04 12:04:46 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/05 08:31:07 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ int	check_mandatory_char(char *array)
 		array++;
 	}
 	if (collectible < 1 || exit != 1 || start_p != 1 || empty_space < 1)
-	{
-		ft_printf("Número de elementos no válido\n");
 		return (0);
-	}
 	return (1);
 }
 
@@ -76,10 +73,7 @@ int	check_fd(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-	{
-		ft_printf("El path no es una dirección válida\n ");
 		return (0);
-	}
 	else
 		return (fd);
 }
@@ -100,6 +94,7 @@ char	**check_map(int fd)
 		line = map_to_one_line(fd, aux1);
 	if (!check_mandatory_char(line) || !detect_different_char(line))
 	{
+		ft_printf("Error.\nNúmero de elementos no válido\n");
 		free(line);
 		exit(0);
 	}

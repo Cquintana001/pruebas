@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:54:15 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/05 07:50:19 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/05 08:25:35 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ int	check_if_rectangular(char **map, int nbr_of_lines)
 	{
 		len_of_line = ft_strlen(*map);
 		if (len_of_line != aux || nbr_of_lines == len_of_line)
-			return (0);
+		{
+			ft_printf("Error.\nEl mapa no es rectangular.\n");
+			free_map(map);
+			exit(0);
+		}
 		aux = len_of_line;
 		map++;
 		i++;
@@ -54,10 +58,7 @@ int	check_first_last_line(char *line)
 	{
 		check = detect_char(*line);
 		if (check == 0)
-		{
-			ft_printf("Muros primera y última línea mal configurados\n");
 			return (0);
-		}
 		line++;
 	}
 	return (1);
@@ -69,10 +70,7 @@ int	check_middle_lines(char *line)
 
 	len_of_line = ft_strlen(line);
 	if (*line != '1' || line[len_of_line - 1] != '1')
-	{
-		ft_printf("Muros líneas intermedias mal configurados\n");
 		return (0);
-	}
 	else
 		return (1);
 }
@@ -94,6 +92,7 @@ void	check_walls(char **map, int nbr_of_lines)
 			check = check_middle_lines(*map);
 		if (check == 0)
 		{	
+			ft_printf("Error.\nMuros mal configurados\n");
 			free_map(map);
 			exit(0);
 		}

@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:22:44 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/05 07:50:14 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/05 08:28:38 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		ft_printf("Numero de argumentos incorrecto\n");
+		ft_printf("Error\nNumero de argumentos incorrecto\n");
 		return (0);
 	}
 	check_extension(argv[1], ".ber");
