@@ -1,7 +1,7 @@
 NAME				=	so_long
 
 CC 					= 	gcc
-CFLAGS 				= 	-Wall -Werror -Wextra -g
+CFLAGS 				= 	-Wall -Werror -Wextra
 SRC_DIR				=	src
 LIB_FT				=	Libft
 LIB_GNL				=	Gnl
@@ -29,9 +29,9 @@ RESET			=	"\\x1b[37m"
 $(NAME): $(OBJS)
 	@echo "\n\n$(GREEN)Compiling libft$(RESET)\n\n"
 	make -C $(LIB_FT)
-	@echo "\n\n$(RED)Compiling printf$(RESET)\n\n"
+	@echo "\n\n$(GREEN)Compiling printf$(RESET)\n\n"
 	make -C $(LIB_PRINTF)
-	@echo "\n\n$(YELLOW)Compiling minilibx$(RESET)\n\n"
+	@echo "\n\n$(GREEN)Compiling minilibx$(RESET)\n\n"
 	make -C $(LIB_MINILIBX)
 	cp $(LIB_MINILIBX)/libmlx.a .
 	$(CC) $(CFLAGS) $(CFLAGS_MINILIBX) $(OBJS) $(LIB_FT)/libft.a $(LIB_PRINTF)/libftprintf.a libmlx.a -o $(NAME)
@@ -45,7 +45,8 @@ fclean : clean
 
 clean:
 	rm -f $(OBJS) $(NAME) libft.a libmlx.a
-	 
+
+re: fclean all	 
 
 .PHONY: all
 

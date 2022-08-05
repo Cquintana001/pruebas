@@ -6,13 +6,26 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:22:44 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/04 11:59:18 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/05 07:50:14 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../minilibx/mlx.h"
 #include "../printf/ft_printf.h"
+#include <stdlib.h>
+
+void	free_map(char **array)
+{
+	int	x;
+
+	x = 0;
+	while (array[x])
+	{
+		free(array[x]);
+		x++;
+	}
+}
 
 void	check_movements(t_map *state)
 {	

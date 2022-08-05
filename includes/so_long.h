@@ -6,7 +6,7 @@
 /*   By: caquinta <caquinta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 08:29:45 by caquinta          #+#    #+#             */
-/*   Updated: 2022/08/04 12:58:24 by caquinta         ###   ########.fr       */
+/*   Updated: 2022/08/05 07:53:18 by caquinta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_map
 }	t_map;
 
 int			check_if_rectangular(char **map, int nbr_of_lines);
-int		check_first_last_line(char *line);
+int			check_first_last_line(char *line);
 int			check_middle_lines(char *line);
 void		check_walls(char **map, int nbr_of_lines);
 void		check_map_configuration(char **map);
@@ -88,4 +88,5 @@ void		renew_map(t_map *state);
 int			close_win(void *vars1);
 void		draw_elements(t_map *state);
 void		check_movements(t_map *state);
+void		free_map(char **array);
 #endif
